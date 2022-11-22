@@ -27,6 +27,9 @@ public class Patient {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@Column(name = "patient_number")
+	private String patientNumber;
+	
 	@Column(name = "first_name", nullable = false)
 	private String firstName;
 	
@@ -47,6 +50,5 @@ public class Patient {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	private Address address;
-	
 
 }
