@@ -1,0 +1,36 @@
+/* Sticky footer set-up */
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+}
+
+footer > ul {
+    margin-bottom: 0;
+}
+
+.list-inline-item {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+
+.social {
+    font-size: 25px;
+    padding: 10px;
+}
