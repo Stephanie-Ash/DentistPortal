@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.qa.dentistportal.persistence.domain.Address;
 import com.qa.dentistportal.persistence.domain.Dentist;
 import com.qa.dentistportal.service.AddressService;
 import com.qa.dentistportal.service.DentistService;
@@ -43,6 +44,19 @@ public class StaffAreaController {
 	@PostMapping("/addDentist")
 	public String addDentist(Model model, @ModelAttribute Dentist newDentist) {
 		dentistService.addDentist(newDentist);
+		return "redirect:/info";
+	}
+	
+	@GetMapping("/addAddress")
+	public String addAddressPage(Model model) {
+		model.addAttribute("newAddress", new Address());
+		
+		return "addAddress";
+	}
+	
+	@PostMapping("/addAddress")
+	public String addAddress(Model model, @ModelAttribute Address newAddress) {
+		addressService.addAddress(newAddress);
 		return "redirect:/info";
 	}
 
