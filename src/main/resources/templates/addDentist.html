@@ -40,26 +40,19 @@
 	</header>
 	<main>
 
-		<h1>Stored Information</h1>
-
-		<h2>Dentists</h2>
-		<div th:each="dentist: ${dentists}">
-			<p th:text="${dentist.firstName} + ' ' + ${dentist.lastName}">This will be the dentist name</p>
-		</div>
-
-		<h2>Addresses</h2>
-		<div th:each="address: ${addresses}">
-			<p th:text="${address.addressLine1}">This will be the address first line</p>
-		</div>
-
-		<h2>Patients</h2>
-		<div th:each="patient: ${patients}">
-			<p th:text="${patient.firstName} + ' ' + ${patient.lastName}">This will be the patient name</p>
-		</div>
+		<h1>Add a Dentist</h1>
 		
-		<a href="/addDentist">Add a Dentist</a>
-		<a href="/addAddress">Add a Address</a>
-		<a href="/addPatient">Add a Patient</a>
+		<form action="#" th:action="@{/addDentist}" th:object="${newDentist}" method="post">
+			<label for="firstName">First Name</label>
+			<input type="text" id="firstName" th:field="*{firstName}">
+			<label for="lastName">Last Name</label>
+			<input type="text" id="lastName" th:field="*{lastName}">
+			<label for="email">Email</label>
+			<input type="email" id="email" th:field="*{email}">
+			<label for="phoneNumber">Phone Number</label>
+			<input type="text" id="phoneNumber" th:field="*{phoneNumber}">
+			<input type="submit" value="Submit">
+		</form>
 
 	</main>
 
