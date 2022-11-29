@@ -84,5 +84,12 @@ public class StaffAreaController {
 		
 		return "patient";	
 	}
+	
+	@PostMapping("/patient/{id}")
+	public String assignDentist(Model model, @ModelAttribute Patient patient) {
+		patientService.assignDentist(patient.getId(), patient);
+		
+		return "redirect:/info";
+	}
 
 }

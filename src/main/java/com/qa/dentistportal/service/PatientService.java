@@ -32,5 +32,13 @@ public class PatientService {
 		Optional<Patient> patient = this.repo.findById(id);
 		return patient.get();
 	}
+	
+	public Patient assignDentist(Long id, Patient newPatient) {
+		Patient existingPatient = this.repo.findById(id).get();
+		
+		existingPatient.setDentist(newPatient.getDentist());
+		
+		return this.repo.save(existingPatient);
+	}
 
 }

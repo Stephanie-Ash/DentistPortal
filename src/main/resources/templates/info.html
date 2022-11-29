@@ -47,9 +47,7 @@
 			<p th:text="${dentist.firstName} + ' ' + ${dentist.lastName}">This will be the dentist name</p>
 			<p th:text="${dentist.email}">This will be the dentist email</p>
 			<p th:text="${dentist.phoneNumber}">This will be the dentist phone number</p>
-			<div th:each="patient: ${dentist.patients}">
-				<p th:text="${patient.firstName} + ' ' + ${patient.lastName}">This will be the patient name</p>
-			</div>
+			<p th:text="${dentist.patients}">This will be the patient name</p>
 		</div>
 
 		<h2>Patients</h2>
@@ -65,6 +63,7 @@
 			<p th:text="${patient.address.county}">This will be the county</p>
 			<p th:text="${patient.address.postcode}">This will be the postcode</p>
 			<p th:text="${patient.address.country}">This will be the country</p>
+			<p th:text="${patient.dentist}">This will be the country</p>
 		</div>
 		
 		<a th:href="@{/addDentist}">Add a Dentist</a>

@@ -53,6 +53,16 @@
 		<p th:text="${patient.address.county}">This will be the county</p>
 		<p th:text="${patient.address.postcode}">This will be the postcode</p>
 		<p th:text="${patient.address.country}">This will be the country</p>
+		
+		<h3>Assign to Dentist</h3>
+		
+		<form action="#" th:action="@{/patient/{id}(id = ${patient.id})}" th:object="${patient}" method="post">
+			<label for="dentist">Select a Dentist</label>
+			<select id="dentist" th:field="*{dentist}">
+				<option th:each="dentist: ${dentists}" th:value="${dentist.id}" th:text="${dentist.firstName} + ' ' + ${dentist.lastName}"></option>
+			</select>
+			<input type="submit" value="Submit">
+		</form>
 
 	</main>
 

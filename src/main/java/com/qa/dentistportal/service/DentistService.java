@@ -29,5 +29,5 @@ private DentistRepository repo;
 		Optional<Dentist> dentist = this.repo.findById(id);
 		return dentist.get();
 	}
-
+	
 }
