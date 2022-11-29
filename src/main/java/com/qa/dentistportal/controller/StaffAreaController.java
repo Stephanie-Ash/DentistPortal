@@ -2,6 +2,7 @@ package com.qa.dentistportal.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -88,6 +89,27 @@ public class StaffAreaController {
 	@PostMapping("/patient/{id}")
 	public String assignDentist(Model model, @ModelAttribute Patient patient) {
 		patientService.assignDentist(patient.getId(), patient);
+		
+		return "redirect:/info";
+	}
+	
+	@DeleteMapping("/dentist/delete/{id}")
+	public String deleteDentist(@PathVariable Long id) {
+		dentistService.deleteDentist(id);
+		
+		return "redirect:/info";
+	}
+	
+	@DeleteMapping("/patient/delete/{id}")
+	public String deletePatient(@PathVariable Long id) {
+		patientService.deletePatient(id);
+		
+		return "redirect:/info";
+	}
+	
+	@DeleteMapping("/address/delete/{id}")
+	public String deleteAddress(@PathVariable Long id) {
+		addressService.deleteAddress(id);
 		
 		return "redirect:/info";
 	}

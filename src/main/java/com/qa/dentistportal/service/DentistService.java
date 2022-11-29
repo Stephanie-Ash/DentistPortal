@@ -30,4 +30,11 @@ private DentistRepository repo;
 		return dentist.get();
 	}
 	
+	public boolean deleteDentist(Long id) {
+		this.repo.deleteById(id);
+		boolean exists = this.repo.existsById(id);
+		
+		return !exists;
+	}
+	
 }

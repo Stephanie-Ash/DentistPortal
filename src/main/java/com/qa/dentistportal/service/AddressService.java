@@ -29,5 +29,12 @@ private AddressRepository repo;
 		Optional<Address> address = this.repo.findById(id);
 		return address.get();
 	}
+	
+	public boolean deleteAddress(Long id) {
+		this.repo.deleteById(id);
+		boolean exists = this.repo.existsById(id);
+		
+		return !exists;
+	}
 
 }

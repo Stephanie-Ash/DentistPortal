@@ -40,5 +40,12 @@ public class PatientService {
 		
 		return this.repo.save(existingPatient);
 	}
+	
+	public boolean deletePatient(Long id) {
+		this.repo.deleteById(id);
+		boolean exists = this.repo.existsById(id);
+		
+		return !exists;
+	}
 
 }
