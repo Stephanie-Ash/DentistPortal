@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.qa.dentistportal.persistence.domain.Address;
@@ -74,6 +75,14 @@ public class StaffAreaController {
 		patientService.addPatient(newPatient, newAddress);
 		
 		return "redirect:/info";
+	}
+	
+	@GetMapping("/patient/{id}")
+	public String patientPage(@PathVariable Long id, Model model) {
+		model.addAttribute("dentists", dentistService.getAllDentists());
+		model.addAttribute("patient", patientService.getPatientById(id));
+		
+		return "patient";	
 	}
 
 }
