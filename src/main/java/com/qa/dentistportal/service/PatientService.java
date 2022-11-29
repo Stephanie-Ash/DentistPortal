@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.qa.dentistportal.persistence.domain.Address;
 import com.qa.dentistportal.persistence.domain.Patient;
 import com.qa.dentistportal.persistence.repository.PatientRepository;
 
@@ -17,7 +18,9 @@ public class PatientService {
 		this.repo = repo;
 	}
 	
-	public Patient addPatient(Patient patient) {
+	public Patient addPatient(Patient patient, Address address) {
+		patient.setAddress(address);
+		address.setPatient(patient);
 		return this.repo.save(patient);
 	}
 	

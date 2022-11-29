@@ -14,12 +14,16 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 
 @Entity
 public class Patient {
@@ -48,12 +52,18 @@ public class Patient {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id", referencedColumnName = "id")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "patient")
 	private Address address;
 	
 	@ManyToOne
 	@JoinColumn(name="dentist_id", referencedColumnName = "id")
 	private Dentist dentist;
 
+	
+	@Override
+	public String toString() {
+		return "Patient [id=" + id + ", patientNumber=" + patientNumber + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", dateOfBirth=" + dateOfBirth + ", email=" + email + ", phoneNumber=" + phoneNumber + "]";
+	}
+	
 }

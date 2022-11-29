@@ -52,17 +52,6 @@
 			</div>
 		</div>
 
-		<h2>Addresses</h2>
-		<div th:each="address: ${addresses}">
-			<p th:text="${address.addressLine1}">This will be the address first line</p>
-			<p th:text="${address.addressLine2}">This will be the address second line</p>
-			<p th:text="${address.town}">This will be the town</p>
-			<p th:text="${address.county}">This will be the county</p>
-			<p th:text="${address.postcode}">This will be the postcode</p>
-			<p th:text="${address.country}">This will be the country</p>
-			<p th:text="${address.patient}">This will be the patient</p>
-		</div>
-
 		<h2>Patients</h2>
 		<div th:each="patient: ${patients}">
 			<p th:text="${patient.patientNumber}">This will be the patient number</p>
@@ -70,7 +59,12 @@
 			<p th:text="${patient.dateOfBirth}">This will be the patient date of birth</p>
 			<p th:text="${patient.email}">This will be the patient email</p>
 			<p th:text="${patient.phoneNumber}">This will be the patient phone number</p>
-			<p th:text="${patient.address}">This will be the address</p>
+			<p th:text="${patient.address.addressLine1}">This will be the address first line</p>
+			<p th:text="${patient.address.addressLine2}">This will be the address second line</p>
+			<p th:text="${patient.address.town}">This will be the town</p>
+			<p th:text="${patient.address.county}">This will be the county</p>
+			<p th:text="${patient.address.postcode}">This will be the postcode</p>
+			<p th:text="${patient.address.country}">This will be the country</p>
 		</div>
 		
 		<a href="/addDentist">Add a Dentist</a>

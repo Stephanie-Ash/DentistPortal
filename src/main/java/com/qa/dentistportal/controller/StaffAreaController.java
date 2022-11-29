@@ -64,13 +64,15 @@ public class StaffAreaController {
 	@GetMapping("/addPatient")
 	public String addPatientPage(Model model) {
 		model.addAttribute("newPatient", new Patient());
+		model.addAttribute("newAddress", new Address());
 		
 		return "addPatient";
 	}
 	
 	@PostMapping("/addPatient")
-	public String addPatient(Model model, @ModelAttribute Patient newPatient) {
-		patientService.addPatient(newPatient);
+	public String addPatient(Model model, @ModelAttribute Patient newPatient, @ModelAttribute Address newAddress) {
+		patientService.addPatient(newPatient, newAddress);
+		
 		return "redirect:/info";
 	}
 

@@ -41,20 +41,38 @@
 	<main>
 
 		<h1>Add a Dentist</h1>
-		
-		<form action="#" th:action="@{/addPatient}" th:object="${newPatient}" method="post">
-			<label for="patientNumber">Patient Number</label>
-			<input type="text" id="patientNumber" th:field="*{patientNumber}">
-			<label for="firstName">First Name</label>
-			<input type="text" id="firstName" th:field="*{firstName}">
-			<label for="lastName">Last Name</label>
-			<input type="text" id="lastName" th:field="*{lastName}">
-			<label for="dateOfBirth">Date Of Birth</label>
-			<input type="date" id="dateOfBirth" th:field="*{dateOfBirth}">
-			<label for="email">Email</label>
-			<input type="email" id="email" th:field="*{email}">
-			<label for="phoneNumber">Phone Number</label>
-			<input type="text" id="phoneNumber" th:field="*{phoneNumber}">
+
+		<form action="#" th:action="@{/addPatient}" method="post">
+			<fieldset>
+				<legend>Patient Details</legend>
+				<label for="patientNumber">Patient Number</label>
+				<input type="text" id="patientNumber" th:value="${newPatient.patientNumber}" name="patientNumber">
+				<label for="firstName">First Name</label>
+				<input type="text" id="firstName" th:value="${newPatient.firstName}" name="firstName">
+				<label for="lastName">Last Name</label>
+				<input type="text" id="lastName" th:value="${newPatient.lastName}" name="lastName">
+				<label for="dateOfBirth">Date Of Birth</label>
+				<input type="date" id="dateOfBirth" th:value="${newPatient.dateOfBirth}" name="dateOfBirth">
+				<label for="email">Email</label>
+				<input type="email" id="email" th:value="${newPatient.email}" name="email">
+				<label for="phoneNumber">Phone Number</label>
+				<input type="text" id="phoneNumber" th:value="${newPatient.phoneNumber}" name="phoneNumber">
+			</fieldset>
+			<fieldset>
+				<legend>Address Details</legend>
+				<label for="addressLine1">Address Line 1</label>
+				<input type="text" id="addressLine1" th:value="${newAddress.addressLine1}" name="addressLine1">
+				<label for="addressLine2">Address Line 2</label>
+				<input type="text" id="addressLine2" th:value="${newAddress.addressLine2}" name="addressLine2">
+				<label for="town">Town</label>
+				<input type="text" id="town" th:value="${newAddress.town}" name="town">
+				<label for="county">County</label>
+				<input type="text" id="county" th:value="${newAddress.county}" name="county">
+				<label for="postcode">Postcode</label>
+				<input type="text" id="postcode" th:value="${newAddress.postcode}" name="postcode">
+				<label for="country">Country</label>
+				<input type="text" id="country" th:value="${newAddress.country}" name="country">
+			</fieldset>
 			<input type="submit" value="Submit">
 		</form>
 

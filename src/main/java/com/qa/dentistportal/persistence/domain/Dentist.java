@@ -12,12 +12,16 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 
 @Entity
 public class Dentist {
@@ -42,5 +46,12 @@ public class Dentist {
 	
 	@OneToMany(mappedBy="dentist", cascade = CascadeType.ALL)
 	private List<Patient> patients;
+
+	
+	@Override
+	public String toString() {
+		return "Dentist [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", phoneNumber=" + phoneNumber + "]";
+	}
 
 }
