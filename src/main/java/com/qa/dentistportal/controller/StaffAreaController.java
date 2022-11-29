@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.qa.dentistportal.persistence.domain.Address;
 import com.qa.dentistportal.persistence.domain.Dentist;
+import com.qa.dentistportal.persistence.domain.Patient;
 import com.qa.dentistportal.service.AddressService;
 import com.qa.dentistportal.service.DentistService;
 import com.qa.dentistportal.service.PatientService;
@@ -57,6 +58,19 @@ public class StaffAreaController {
 	@PostMapping("/addAddress")
 	public String addAddress(Model model, @ModelAttribute Address newAddress) {
 		addressService.addAddress(newAddress);
+		return "redirect:/info";
+	}
+	
+	@GetMapping("/addPatient")
+	public String addPatientPage(Model model) {
+		model.addAttribute("newPatient", new Patient());
+		
+		return "addPatient";
+	}
+	
+	@PostMapping("/addPatient")
+	public String addPatient(Model model, @ModelAttribute Patient newPatient) {
+		patientService.addPatient(newPatient);
 		return "redirect:/info";
 	}
 
