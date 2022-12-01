@@ -51,6 +51,19 @@ public class StaffAreaController {
 		return "redirect:/info";
 	}
 	
+	@GetMapping("/editDentist/{id}")
+	public String editDentistPage(@PathVariable Long id, Model model) {
+		model.addAttribute("dentist", dentistService.getDentistById(id));
+		
+		return "editDentist";
+	}
+	
+	@PutMapping("/editDentist/{id}")
+	public String editDentist(Model model, @ModelAttribute Dentist dentist) {
+		dentistService.updateDentist(dentist.getId(), dentist);
+		return "redirect:/info";
+	}
+	
 	@GetMapping("/addAddress")
 	public String addAddressPage(Model model) {
 		model.addAttribute("newAddress", new Address());

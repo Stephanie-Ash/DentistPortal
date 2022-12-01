@@ -30,6 +30,13 @@ private DentistRepository repo;
 		return dentist.get();
 	}
 	
+	public Dentist updateDentist(Long id, Dentist newDentist) {
+		Dentist existingDentist = this.repo.findById(id).get();
+		newDentist.setId(existingDentist.getId());
+		
+		return this.repo.save(newDentist);
+	}
+	
 	public boolean deleteDentist(Long id) {
 		this.repo.deleteById(id);
 		boolean exists = this.repo.existsById(id);
