@@ -30,9 +30,7 @@ private DentistRepository repo;
 		return dentist.get();
 	}
 	
-	public Dentist updateDentist(Long id, Dentist newDentist) {
-		Dentist existingDentist = this.repo.findById(id).get();
-		newDentist.setId(existingDentist.getId());
+	public Dentist updateDentist(Dentist newDentist) {
 		
 		return this.repo.save(newDentist);
 	}

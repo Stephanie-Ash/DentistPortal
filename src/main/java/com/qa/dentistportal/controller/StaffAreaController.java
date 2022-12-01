@@ -60,7 +60,7 @@ public class StaffAreaController {
 	
 	@PutMapping("/editDentist/{id}")
 	public String editDentist(Model model, @ModelAttribute Dentist dentist) {
-		dentistService.updateDentist(dentist.getId(), dentist);
+		dentistService.updateDentist(dentist);
 		return "redirect:/info";
 	}
 	
@@ -89,6 +89,21 @@ public class StaffAreaController {
 	public String addPatient(Model model, @ModelAttribute Patient newPatient, @ModelAttribute Address newAddress) {
 		patientService.addPatient(newPatient, newAddress);
 		
+		return "redirect:/info";
+	}
+	
+	@GetMapping("/editPatient/{id}")
+	public String editPatientPage(@PathVariable Long id, Model model) {
+		Patient patient = patientService.getPatientById(id);
+		model.addAttribute("patient", patient);
+		model.addAttribute("address", addressService.getAddressById(patient.getAddress().getId()));
+		
+		return "editPatient";
+	}
+	
+	@PutMapping("/editPatient/{id}")
+	public String editPatient(Model model, @ModelAttribute Patient patient, @ModelAttribute Address address) {
+		patientService.updatePatient(patient, address);
 		return "redirect:/info";
 	}
 	

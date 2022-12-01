@@ -41,6 +41,13 @@ public class PatientService {
 		return this.repo.save(existingPatient);
 	}
 	
+	public Patient updatePatient(Patient newPatient, Address newAddress) {
+		newPatient.setAddress(newAddress);
+		newAddress.setPatient(newPatient);
+		
+		return this.repo.save(newPatient);
+	}
+	
 	public boolean deletePatient(Long id) {
 		this.repo.deleteById(id);
 		boolean exists = this.repo.existsById(id);

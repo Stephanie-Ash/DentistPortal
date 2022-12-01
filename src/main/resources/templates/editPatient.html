@@ -40,53 +40,41 @@
 	</header>
 	<main>
 
-		<h1>Stored Information</h1>
+		<h1>Edit a Patient</h1>
 
-		<h2>Dentists</h2>
-		<div th:each="dentist: ${dentists}">
-			<p th:text="${dentist.firstName} + ' ' + ${dentist.lastName}">This will be the dentist name</p>
-			<p th:text="${dentist.email}">This will be the dentist email</p>
-			<p th:text="${dentist.phoneNumber}">This will be the dentist phone number</p>
-			<div th:each="patient: ${dentist.patients}">
-				<p th:text="${patient.firstName} + ' ' + ${patient.lastName}">This will be the dentist name</p>
-			</div>
-			<a th:href="@{/editDentist/{id}(id = ${dentist.id})}">Edit</a>
-			<form th:action="@{/dentist/delete/{id}(id = ${dentist.id})}" th:method="delete">
-				<button>Delete</button>
-			</form>
-		</div>
-
-		<h2>Patients</h2>
-		<div th:each="patient: ${patients}">
-			<a th:href="@{/patient/{id}(id = ${patient.id})}" th:text="${patient.patientNumber}">This will be the patient number</a>
-			<p th:text="${patient.firstName} + ' ' + ${patient.lastName}">This will be the patient name</p>
-			<p th:text="${patient.dateOfBirth}">This will be the patient date of birth</p>
-			<p th:text="${patient.email}">This will be the patient email</p>
-			<p th:text="${patient.phoneNumber}">This will be the patient phone number</p>
-			<p th:text="${patient.address.addressLine1}">This will be the address first line</p>
-			<p th:text="${patient.address.addressLine2}">This will be the address second line</p>
-			<p th:text="${patient.address.town}">This will be the town</p>
-			<p th:text="${patient.address.county}">This will be the county</p>
-			<p th:text="${patient.address.postcode}">This will be the postcode</p>
-			<p th:text="${patient.address.country}">This will be the country</p>
-			<p th:text="${patient.dentist} ? ${patient.dentist.firstName}">This will be the dentist</p>
-			<a th:href="@{/editPatient/{id}(id = ${patient.id})}">Edit</a>
-			<form th:action="@{/patient/delete/{id}(id = ${patient.id})}" th:method="delete">
-				<button>Delete</button>
-			</form>
-		</div>
-		
-		<h2>Addresses</h2>
-		<div th:each="address: ${addresses}">
-			<p th:text="${address.addressLine1}">This will be the address line 1</p>
-			<form th:action="@{/address/delete/{id}(id = ${address.id})}" th:method="delete">
-				<button>Delete</button>
-			</form>
-		</div>
-		
-		<a th:href="@{/addDentist}">Add a Dentist</a>
-		<a th:href="@{/addAddress}">Add an Address</a>
-		<a th:href="@{/addPatient}">Add a Patient</a>
+		<form action="#" th:action="@{/editPatient/{id}(id = ${patient.id})}" th:method="put">
+			<fieldset>
+				<legend>Patient Details</legend>
+				<label for="patientNumber">Patient Number</label>
+				<input type="text" id="patientNumber" th:value="${patient.patientNumber}" name="patientNumber">
+				<label for="firstName">First Name</label>
+				<input type="text" id="firstName" th:value="${patient.firstName}" name="firstName">
+				<label for="lastName">Last Name</label>
+				<input type="text" id="lastName" th:value="${patient.lastName}" name="lastName">
+				<label for="dateOfBirth">Date Of Birth</label>
+				<input type="date" id="dateOfBirth" th:value="${patient.dateOfBirth}" name="dateOfBirth">
+				<label for="email">Email</label>
+				<input type="email" id="email" th:value="${patient.email}" name="email">
+				<label for="phoneNumber">Phone Number</label>
+				<input type="text" id="phoneNumber" th:value="${patient.phoneNumber}" name="phoneNumber">
+			</fieldset>
+			<fieldset>
+				<legend>Address Details</legend>
+				<label for="addressLine1">Address Line 1</label>
+				<input type="text" id="addressLine1" th:value="${address.addressLine1}" name="addressLine1">
+				<label for="addressLine2">Address Line 2</label>
+				<input type="text" id="addressLine2" th:value="${address.addressLine2}" name="addressLine2">
+				<label for="town">Town</label>
+				<input type="text" id="town" th:value="${address.town}" name="town">
+				<label for="county">County</label>
+				<input type="text" id="county" th:value="${address.county}" name="county">
+				<label for="postcode">Postcode</label>
+				<input type="text" id="postcode" th:value="${address.postcode}" name="postcode">
+				<label for="country">Country</label>
+				<input type="text" id="country" th:value="${address.country}" name="country">
+			</fieldset>
+			<input type="submit" value="Submit">
+		</form>
 
 	</main>
 
