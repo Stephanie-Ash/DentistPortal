@@ -56,7 +56,7 @@
 		
 		<h3>Assign to Dentist</h3>
 		
-		<form action="#" th:action="@{/patient/{id}(id = ${patient.id})}" th:object="${patient}" method="post">
+		<form action="#" th:action="@{/patient/{id}(id = ${patient.id})}" th:object="${patient}" th:method="put">
 			<label for="dentist">Select a Dentist</label>
 			<select id="dentist" th:field="*{dentist}">
 				<option th:each="dentist: ${dentists}" th:value="${dentist.id}" th:text="${dentist.firstName} + ' ' + ${dentist.lastName}"></option>

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.qa.dentistportal.persistence.domain.Address;
 import com.qa.dentistportal.persistence.domain.Dentist;
@@ -86,7 +87,7 @@ public class StaffAreaController {
 		return "patient";	
 	}
 	
-	@PostMapping("/patient/{id}")
+	@PutMapping("/patient/{id}")
 	public String assignDentist(Model model, @ModelAttribute Patient patient) {
 		patientService.assignDentist(patient.getId(), patient);
 		

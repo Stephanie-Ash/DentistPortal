@@ -69,13 +69,17 @@
 			<p th:text="${patient.address.postcode}">This will be the postcode</p>
 			<p th:text="${patient.address.country}">This will be the country</p>
 			<p th:text="${patient.dentist} ? ${patient.dentist.firstName}">This will be the dentist</p>
-			<a th:href="@{/patient/delete/{id}(id = ${patient.id})}">Delete</a>
+			<form th:action="@{/patient/delete/{id}(id = ${patient.id})}" th:method="delete">
+				<button>Delete</button>
+			</form>
 		</div>
 		
 		<h2>Addresses</h2>
 		<div th:each="address: ${addresses}">
 			<p th:text="${address.addressLine1}">This will be the address line 1</p>
-			<a th:href="@{/address/delete/{id}(id = ${address.id})}">Delete</a>
+			<form th:action="@{/address/delete/{id}(id = ${address.id})}" th:method="delete">
+				<button>Delete</button>
+			</form>
 		</div>
 		
 		<a th:href="@{/addDentist}">Add a Dentist</a>
