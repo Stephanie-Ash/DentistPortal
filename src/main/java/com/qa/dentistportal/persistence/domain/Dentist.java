@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
@@ -44,10 +45,14 @@ public class Dentist {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 	
-	@OneToMany(mappedBy="dentist", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="dentist", cascade = CascadeType.PERSIST)
 	private List<Patient> patients;
-
 	
+	@PreRemove
+	private void preRemove() {
+		patients.forEach(patient -> patient.setDentist(null));
+	}
+
 	@Override
 	public String toString() {
 		return "Dentist [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
